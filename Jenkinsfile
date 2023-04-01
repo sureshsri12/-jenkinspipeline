@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build front-end') {
             steps {
-                sh 'cd /my-app-docker/client && npm install && npm start && npm run build'
+                sh 'cd client && npm install && npm start && npm run build'
             }
         }
         stage('Build back-end') {
