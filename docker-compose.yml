@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  services1:
+    build: ./service1
+    container_name: service1
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./service1:/app
+      - ./app/node_modules
+  services2:
+    build: ./service2
+    container_name: service2
+    ports:
+      - '4002:4002'
+    volumes:
+      - ./service2:/app
+      - ./app/node_modules
+  client:
+    build: ./client
+    container_name: client
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client:/app
+      - ./app/node_modules
+    stdin_open: true
+    tty: true
+
+
+  #  version: '3'
+  #  services:
+  #     service1:
+  #       build:
+  #       context: ./service1
+  #       dockerfile: Dockerfile.service1
+  #       ports:
+  #           - "4000:4000"
+  #     service2:
+  #       build:
+  #       context: ./service2
+  #       dockerfile: Dockerfile.service2
+  #       ports:
+  #          - "4002:4002"
+  #     client:
+  #       build:
+  #       context: ./client
+  #       dockerfile: Dockerfile.client
+  #       ports:
+  #           - "3000:3000" 
+
