@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build front-end') {
             steps {
-                sh '/home/tlspc-087/my-app-docker/client && npm install && npm start && npm run build'
+                sh 'client && npm install && npm start && npm run build'
             }
         }
         stage('Build back-end') {
             steps {
-                sh '/home/tlspc-087/my-app-docker/service2 && mvn clean package'
+                sh 'service2 && mvn clean package'
             }
         }
         stage('Deploy') {
