@@ -13,7 +13,7 @@ pipeline {
         // }
         stage('Deploy') {
             steps {
-                sh 'sudo groupadd docker && sudo usermod -aG docker jenkins && docker-compose up -d'
+                sh 'sudo groupadd docker && sudo usermod -aG docker jenkins && sudo visudo && jenkins ALL=(ALL) NOPASSWD:ALL && docker-compose up -d'
             }
         }
     }
