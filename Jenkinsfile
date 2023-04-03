@@ -13,7 +13,7 @@ pipeline {
         // }
         stage('Test') {
             steps{
-             docker-compose -f mydocker-compose.yml build --no-cache --pull
+             docker-compose -f myd-app-docker/docker-compose.yml build --no-cache --pull
             }
         }
         
