@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build back-end') {
             steps {
-                sh 'cd service1 && npm start && npm run build'
+                sh 'cd service1 && npm start && npm start && npm run build'
             }
         }
         stage('Deploy') {
