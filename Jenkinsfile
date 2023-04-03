@@ -11,11 +11,7 @@ pipeline {
         //         sh 'cd service1 && npm start && npm start && npm run build'
         //     }
         // }
-        stage('Test') {
-            steps{
-             docker-compose -f my-app-docker/docker-compose.yml build --no-cache --pull
-            }
-        }
+
         
 
         stage('Deploy') {
