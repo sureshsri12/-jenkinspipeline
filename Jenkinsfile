@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build back-end') {
             steps {
-                sh 'service2 && mvn clean package'
+                sh 'cd service1 && mvn clean package'
             }
         }
         stage('Deploy') {
