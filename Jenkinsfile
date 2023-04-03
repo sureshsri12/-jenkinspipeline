@@ -11,20 +11,9 @@ pipeline {
         //         sh 'cd service1 && npm start && npm start && npm run build'
         //     }
         // }
-    stage("verify tooling") {
-      steps {
-        sh '''
-          docker version
-          docker info
-          docker compose version 
-          curl --version
-          jq --version
-        '''
-      }
-    }
         stage('Deploy') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'sudo usermod -aG docker jenkins && docker-compose up -d'
             }
         }
     }
