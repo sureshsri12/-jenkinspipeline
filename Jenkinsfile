@@ -2,6 +2,7 @@ pipeline {
     agent any
     stages {
      stage('sonarqube analysis'){
+      steps{
         def scannerHome = tool 'sonarqube';
         withSonarQubeEnv("sonarqube"){
             sh "${scannerHome}/bin/sonar-scanner \
@@ -12,7 +13,7 @@ pipeline {
             -D sonar.host.url=http://localhost:9000/"
     }
  }
-    
+     }    
     
 
       // stage('sonarqube analysis'){
