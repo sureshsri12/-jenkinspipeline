@@ -7,7 +7,7 @@ pipeline {
             sh './sonar-scanner'
         }
     }
-}
+
       // stage('sonarqube analysis'){
       //   // def scannerHome = tool 'sonarqube';
       //   // withSonarQubeEnv("sonarqube"){
