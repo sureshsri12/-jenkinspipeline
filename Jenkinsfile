@@ -1,12 +1,13 @@
 pipeline {
     agent any
     stages {
-    stage('SonarQube analysis') {
+     stage('SonarQube analysis') {
       steps {
-        withSonarQubeEnv('sonarqube') {
-          sh './sonar-scanner'
+        withSonarQubeEnv('SonarQube') {
+          sh "sonar-scanner"
         }
       }
+    }
     
 
       // stage('sonarqube analysis'){
