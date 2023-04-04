@@ -1,6 +1,16 @@
 pipeline {
     agent any
     stages {
+      stage('sonarqube analysis'){
+        def scannerHome = tool 'sonarqube';
+        withSonarQubeEnv("sonarqube"){
+            sh "${scannerHome}/bin/sonar-scanner \
+            -D sonar.login=admin \
+            -D sonar.password=admin@123 \
+            -D sonar.projectKey=test1 \
+            -D sonar.exclusions=vendor/**,resources/**.**/*.java \
+            -D sonar.host.url=http://localhost:9000/"
+    }
       stage("verify tooling") {
       steps {
         sh '''
