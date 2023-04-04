@@ -42,25 +42,5 @@ pipeline {
             }
         }
     }
+}
 
-
-// pipeline {
-//   agent any
-  
-//   stages {
-//     stage('Build and run containers') {
-//       steps {
-//         sh 'docker-compose up -d'
-//       }
-//     }
-    
-//     // Other stages and steps for your pipeline
-//   }
-  
-//   post {
-//     always {
-//       // Stop and remove the containers
-//       sh 'docker-compose down'
-//     }
-//   }
-// }
