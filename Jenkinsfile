@@ -13,7 +13,7 @@ pipeline {
           sh 'mvn sonar:sonar'
         }
       }
-    }
+    
 
       // stage('sonarqube analysis'){
       //   // def scannerHome = tool 'sonarqube';
