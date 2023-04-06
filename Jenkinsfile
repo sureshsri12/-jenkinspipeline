@@ -1,20 +1,6 @@
 pipeline {
     agent any
     stages {
-      stage('sonarqube analysis') {
-        def scannerHome = tool 'sonarqube';
-          withSonarQubeEnv("sonarqube"){
-            sh "${scannerHome}/bin/sonar-scanner \
-            -D sonar.login=admin \
-            -D sonar.password=admin@123 \
-            -D sonar.projectKey=Fullstackproject \
-            -D sonar.exclusions=vendor/**,resources/**.**/*.java \
-            -D sonar.host.url=http://localhost:9000/"
-    }
- }
-    
-    
-
       // stage('sonarqube analysis'){
       //   // def scannerHome = tool 'sonarqube';
       //   // withSonarQubeEnv("sonarqube"){
