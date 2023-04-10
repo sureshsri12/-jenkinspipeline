@@ -11,6 +11,14 @@ pipeline {
       //   //     -D sonar.exclusions=vendor/**,resources/**.**/*.java \
       //   //     -D sonar.host.url=http://localhost:9000/"
       //   sh 'sonar-scanner'
+
+      stage('SonarQube analysis') {
+    steps {
+        withSonarQubeEnv('Fullstackproject') {
+            sh 'mvn sonar:sonar'
+        }
+    }
+}
     
       stage("verify tooling") {
       steps {
