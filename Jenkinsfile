@@ -1,6 +1,14 @@
 pipeline {
     agent any
-  
+    tools {
+      maven 'Maven 3.8.4'
+    }
+    stages {
+      stage('Build') {
+            steps {
+                sh 'mvn clean install' // run Maven command
+            }
+        }
       // stage('sonarqube analysis'){
       //   // def scannerHome = tool 'sonarqube';
       //   // withSonarQubeEnv("sonarqube"){
@@ -11,16 +19,7 @@ pipeline {
       //   //     -D sonar.exclusions=vendor/**,resources/**.**/*.java \
       //   //     -D sonar.host.url=http://localhost:9000/"
       //   sh 'sonar-scanner'
-      tools {
-        maven 'Maven 3.8.4' // specify the Maven installation
-    }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn clean install' // run Maven command
-            }
-        }
-    }
+
       stage('SonarQube analysis') {
     steps {
         withSonarQubeEnv('Fullstackproject') {
@@ -45,5 +44,5 @@ pipeline {
             }
         }
     }
-
+}
 
