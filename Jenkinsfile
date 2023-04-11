@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    stages {
+  
       // stage('sonarqube analysis'){
       //   // def scannerHome = tool 'sonarqube';
       //   // withSonarQubeEnv("sonarqube"){
