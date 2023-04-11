@@ -1,18 +1,6 @@
 pipeline {
     agent any
-      tools { 
-        maven 'Maven 3.3.9' 
-        jdk 'jdk8' 
-    }
     stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${/opt/apache-maven-3.6.3}"
-                    echo "M2_HOME = ${/opt/apache-maven-3.6.3}"
-                ''' 
-            }
-        }
       // stage('sonarqube analysis'){
       //   // def scannerHome = tool 'sonarqube';
       //   // withSonarQubeEnv("sonarqube"){
