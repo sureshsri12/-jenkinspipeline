@@ -1,12 +1,16 @@
 pipeline {
     agent any
-    tools {
-      maven 'Maven 3.6.3'
+      tools { 
+        maven 'Maven 3.3.9' 
+        jdk 'jdk8' 
     }
     stages {
-      stage('Build') {
+        stage ('Initialize') {
             steps {
-                sh 'mvn clean install' // run Maven command
+                sh '''
+                    echo "PATH = ${/opt/apache-maven-3.6.3}"
+                    echo "M2_HOME = ${/opt/apache-maven-3.6.3}"
+                ''' 
             }
         }
       // stage('sonarqube analysis'){
