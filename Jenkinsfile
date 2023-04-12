@@ -1,24 +1,33 @@
 pipeline {
     agent any
-	// environment {
-	//               PATH = "$PATH:/usr/share/maven-3.6.0/bin"
-	// 			  }
-  //   stages {
-  //            stage('Build') {
-	// 		 steps{
-	// 		         sh 'mvn clean package'
-	// 		 }
-	// 		} 
-
-//       stage('SonarQube analysis') {
-//     steps {
-//         withSonarQubeEnv('Fullstackproject') {
-//             sh 'mvn sonar:sonar'
-//         }
-//     }
-// }
+    //  environment {
+    //     ACR_SERVER = 'your-acr-server.azurecr.io'
+    //     ACR_USERNAME = credentials('acr-username')
+    //     ACR_PASSWORD = credentials('acr-password')
+    //     DOCKER_IMAGE_NAME = 'your-docker-image-name'
+    //     DOCKERFILE_PATH = 'path/to/Dockerfile'
+    // }
+	
 stages{
-  
+  //  stage('Build Docker image') {
+  //           steps {
+  //               sh "docker build -t ${DOCKER_IMAGE_NAME} ${DOCKERFILE_PATH}"
+  //           }
+  //       }
+  //       stage('Push to ACR') {
+  //           steps {
+  //               withCredentials([usernamePassword(credentialsId: 'acr-credentials-id', usernameVariable: 'ACR_USERNAME', passwordVariable: 'ACR_PASSWORD')]) {
+  //                   azurePushImage(
+  //                       azureCredentialsId: 'azure-credentials-id',
+  //                       resourceGroup: 'your-resource-group',
+  //                       registry: "${ACR_SERVER}",
+  //                       imageName: "${DOCKER_IMAGE_NAME}",
+  //                       imageTag: "${BUILD_NUMBER}",
+  //                       force: true
+  //                   )
+  //               }
+  //           }
+  //       }
 stage('SonarQube analysis') {
   steps {
     withSonarQubeEnv(installationName: 'sonarqube') {
@@ -46,7 +55,7 @@ stage('SonarQube analysis') {
     }
         stage('Deploy') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'docker-compose up --build'
             }
         }
     }
