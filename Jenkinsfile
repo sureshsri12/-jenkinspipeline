@@ -21,7 +21,8 @@ stages{
 stage('SonarQube analysis') {
   steps {
     withSonarQubeEnv('SonarQube') {
-      sh "sonar-scanner -Dsonar.projectKey=Fullstackproject -Dsonar.projectName='Fullstackproject' -Dsonar.sources=src"
+      // sh "sonar-scanner -Dsonar.projectKey=Fullstackproject -Dsonar.projectName='Fullstackproject' -Dsonar.sources=src"
+      sh "sonar-scanner -Dsonar.host.url=http://localhost:9000/ -Dsonar.login=sqp_c51a2eaf72d11e08b824fbf793cb53096f609866 -Dsonar.projectKey=Fullstackproject"
     }
   }
 }
