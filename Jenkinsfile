@@ -1,23 +1,32 @@
 pipeline {
     agent any
-	environment {
-	              PATH = "$PATH:/usr/share/maven-3.6.0/bin"
-				  }
-    stages {
-             stage('Build') {
-			 steps{
-			         sh 'mvn clean package'
-			 }
-			} 
+	// environment {
+	//               PATH = "$PATH:/usr/share/maven-3.6.0/bin"
+	// 			  }
+  //   stages {
+  //            stage('Build') {
+	// 		 steps{
+	// 		         sh 'mvn clean package'
+	// 		 }
+	// 		} 
 
-      stage('SonarQube analysis') {
-    steps {
-        withSonarQubeEnv('Fullstackproject') {
-            sh 'mvn sonar:sonar'
-        }
+//       stage('SonarQube analysis') {
+//     steps {
+//         withSonarQubeEnv('Fullstackproject') {
+//             sh 'mvn sonar:sonar'
+//         }
+//     }
+// }
+stages{
+stage('SonarQube analysis') {
+  steps {
+    withSonarQubeEnv('SonarQube') {
+      sh 'sonar-scanner'
     }
+  }
 }
-    
+
+
       stage("verify tooling") {
       steps {
         sh '''
