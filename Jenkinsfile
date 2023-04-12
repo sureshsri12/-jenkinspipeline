@@ -21,7 +21,7 @@ stages{
 stage('SonarQube analysis') {
   steps {
     withSonarQubeEnv('SonarQube') {
-      sh 'sonar-scanner'
+      sh "sonar-scanner -Dsonar.projectKey=Fullstackproject -Dsonar.projectName='Fullstackproject' -Dsonar.sources=src"
     }
   }
 }
