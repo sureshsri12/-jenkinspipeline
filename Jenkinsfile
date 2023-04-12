@@ -55,7 +55,7 @@ stage('SonarQube analysis') {
     }
         stage('Deploy') {
             steps {
-                sh 'docker-compose up --build'
+                sh 'docker-compose up -d'
             }
         }
     }
