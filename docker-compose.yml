@@ -23,7 +23,7 @@ services:
       - '3000:3000'
     volumes:
       - ./client:/app
-      - ./app/node_modules
+      - ./home/tlspc-087/my-app-docker/client/node_modules
   
     stdin_open: true
     tty: true
