@@ -58,14 +58,6 @@ stage('SonarQube analysis') {
                 sh 'docker-compose up -d'
             }
         }
-        stage('Deploy to ACR')
-         steps{
-        script {
-          docker.withRegistry( 'https://hub.docker.com/', registryCredential ) {
-            dockerImage.push("latest")
-          }
-        }
-      }
     }
 }
 
