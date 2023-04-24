@@ -61,7 +61,7 @@ stage('SonarQube analysis') {
         stage('Deploy to ACR')
          steps{
         script {
-          docker.withRegistry( 'jenkinspipeline12/fullstackproject', registryCredential ) {
+          docker.withRegistry( 'https://hub.docker.com/', registryCredential ) {
             dockerImage.push("latest")
           }
         }
